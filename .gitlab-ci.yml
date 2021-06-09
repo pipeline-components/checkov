@@ -19,8 +19,6 @@ test amd64 defaultcmd:
     - docker run --rm "${CI_REGISTRY_IMAGE}/build:${BUILD_ARCH}-${CI_COMMIT_SHA}" --version
 
 test amd64 testterraform:
-  rules:
-    allow_failure: true
   variables:
     BUILD_ARCH: amd64
   extends: .test
