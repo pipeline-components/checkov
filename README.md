@@ -21,9 +21,9 @@ The image is for running checkov, checkov is installed in /app/ in case you need
 ```yaml
 checkov:
   stage: linting
-  image: pipelinecomponents/checkov:latest
+  image: registry.gitlab.com/pipeline-components/checkov:latest
   script:
-    - checkov .
+    - checkov -d .
 ```
 
 ## Versioning
