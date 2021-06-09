@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # ------------------------------------------------------------------------------
 COPY --from=entrypoint /entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-ENV DEFAULTCMD _template_
+ENV DEFAULTCMD checkov
 
 WORKDIR /code/
 
