@@ -17,10 +17,3 @@ test amd64 defaultcmd:
   extends: .test
   script:
     - docker run --rm "${CI_REGISTRY_IMAGE}/build:${BUILD_ARCH}-${CI_COMMIT_SHA}" --version
-
-test amd64 testterraform:
-  variables:
-    BUILD_ARCH: amd64
-  extends: .test
-  script:
-    - docker run --rm "${CI_REGISTRY_IMAGE}/build:${BUILD_ARCH}-${CI_COMMIT_SHA}" -f test.tf
