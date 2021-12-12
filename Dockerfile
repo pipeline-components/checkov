@@ -10,7 +10,7 @@ FROM python:3.9.9-alpine3.14
 ENV PYTHONUSERBASE /app
 WORKDIR /app/
 COPY app /app/
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --prefer-binary --no-cache-dir -r requirements.txt
 
 # ==============================================================================
 # Generic for all components
