@@ -4,13 +4,39 @@
 FROM pipelinecomponents/base-entrypoint:0.5.0 as entrypoint
 
 # ==============================================================================
+# Build process
+# ------------------------------------------------------------------------------
+FROM python:3.9.9-alpine3.14 as build
+ENV PYTHONUSERBASE /app
+ENV PATH "$PATH:/app/bin/"
+
+WORKDIR /app/
+COPY app /app/
+
+# Adding dependencies
+# hadolint ignore=DL3018
+RUN apk add --no-cache libffi && \
+    apk add --no-cache --virtual .build \
+    build-base libffi-dev
+
+# hadolint ignore=DL3013
+RUN pip3 install --user --no-cache-dir --prefer-binary  \
+        --find-links https://wheels.home-assistant.io/alpine-3.14/amd64/ \
+        --find-links https://wheels.home-assistant.io/alpine-3.14/aarch64/ \
+        -r requirements.txt
+
+# ==============================================================================
 # Component specific
 # ------------------------------------------------------------------------------
 FROM python:3.9.9-alpine3.14
+
+# Adding dependencies
+# hadolint ignore=DL3018
+RUN apk add --no-cache git libffi
+
+ENV PATH "$PATH:/app/bin/"
 ENV PYTHONUSERBASE /app
-WORKDIR /app/
-COPY app /app/
-RUN pip install --prefer-binary --no-cache-dir -r requirements.txt
+COPY --from=build /app /app
 
 # ==============================================================================
 # Generic for all components
