@@ -21,6 +21,7 @@ RUN apk add --no-cache libffi && \
 
 # hadolint ignore=DL3013
 RUN pip3 install --user --no-cache-dir --prefer-binary  \
+        --find-links https://wheels.home-assistant.io/musllinux/ \
         --find-links https://wheels.home-assistant.io/alpine-3.14/amd64/ \
         --find-links https://wheels.home-assistant.io/alpine-3.14/aarch64/ \
         -r requirements.txt
