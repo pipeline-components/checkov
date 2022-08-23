@@ -6,7 +6,7 @@ FROM pipelinecomponents/base-entrypoint:0.5.0 as entrypoint
 # ==============================================================================
 # Build process
 # ------------------------------------------------------------------------------
-FROM python:3.10.4-alpine3.14 as build
+FROM python:3.10.6-alpine3.16 as build
 ENV PYTHONUSERBASE /app
 ENV PATH "$PATH:/app/bin/"
 
@@ -21,6 +21,7 @@ RUN apk add --no-cache libffi && \
 
 # hadolint ignore=DL3013
 RUN pip3 install --user --no-cache-dir --prefer-binary  \
+        --find-links https://wheels.home-assistant.io/musllinux/ \
         --find-links https://wheels.home-assistant.io/alpine-3.14/amd64/ \
         --find-links https://wheels.home-assistant.io/alpine-3.14/aarch64/ \
         -r requirements.txt
@@ -28,7 +29,7 @@ RUN pip3 install --user --no-cache-dir --prefer-binary  \
 # ==============================================================================
 # Component specific
 # ------------------------------------------------------------------------------
-FROM python:3.10.4-alpine3.14
+FROM python:3.10.6-alpine3.16
 
 # Adding dependencies
 # hadolint ignore=DL3018
