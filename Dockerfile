@@ -61,7 +61,7 @@ LABEL \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.url="https://pipeline-components.dev/" \
     org.opencontainers.image.source="https://gitlab.com/pipeline-components/checkov/" \
-    org.opencontainers.image.documentation="https://gitlab.com/pipeline-components/checkov/blob/master/README.md" \
+    org.opencontainers.image.documentation="https://gitlab.com/pipeline-components/checkov/blob/main/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \
     org.opencontainers.image.revision=${BUILD_REF} \
     org.opencontainers.image.version=${BUILD_VERSION} \
@@ -70,7 +70,7 @@ LABEL \
     org.label-schema.name="Checkov" \
     org.label-schema.schema-version="1.0" \
     org.label-schema.url="https://pipeline-components.dev/" \
-    org.label-schema.usage="https://gitlab.com/pipeline-components/checkov/blob/master/README.md" \
+    org.label-schema.usage="https://gitlab.com/pipeline-components/checkov/blob/main/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
     org.label-schema.vcs-url="https://gitlab.com/pipeline-components/checkov/" \
     org.label-schema.vendor="Pipeline Components"
